@@ -28,7 +28,7 @@ namespace HotelRooms.Persistence
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(_configuration.GetConnectionString("HotelsDB"));
+                optionsBuilder.UseSqlServer("ConnectionString");
         }
     }
 }

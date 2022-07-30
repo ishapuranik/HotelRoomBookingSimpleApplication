@@ -18,6 +18,8 @@ namespace HotelRoomBookingSimpleApp
             IServiceCollection services = new ServiceCollection();
 
             startup.ConfigureServices(services);
+            startup.ConfigureRepositories(services);
+
             IServiceProvider serviceProvider = services.BuildServiceProvider();
 
             // Get Service and call method
@@ -79,6 +81,7 @@ namespace HotelRoomBookingSimpleApp
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IBookingManager, BookingManager>();
 
             services.AddSingleton<IBookingService, BookingService>();
         }
