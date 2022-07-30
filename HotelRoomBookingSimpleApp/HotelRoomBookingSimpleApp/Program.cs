@@ -11,6 +11,8 @@ namespace HotelRoomBookingSimpleApp
 {
     public class Program
     {
+        //static Object _service = null;
+
         public static void Main(string[] args)
         {
             // Startup.cs finally :)
@@ -24,7 +26,7 @@ namespace HotelRoomBookingSimpleApp
 
             // Get Service and call method
             var service = serviceProvider.GetService<IBookingManager>();
-
+            
             Console.WriteLine(service?.IsRoomAvailable(101, new DateTime(2022, 08, 02))); //outputs true
 
             service?.AddBooking("Surname", 101, new DateTime(2022, 08, 02));
@@ -34,7 +36,7 @@ namespace HotelRoomBookingSimpleApp
             service?.AddBooking("Li", 101, new DateTime(2022, 08, 02)); // throws an exception
 
             /**************** Code using monitor and lock - couldn't complete it ********************************
-            StartBooking(service, "Surname", 101, new DateTime(2022, 08, 02));
+            _service = service;
 
             Thread[] Threads = new Thread[3];
             for (int i = 0; i < 3; i++)
@@ -46,23 +48,25 @@ namespace HotelRoomBookingSimpleApp
                 t.Start();
 
             Console.ReadLine();
-            ******************************************************************************/
+              ******************************************************************************/
         }
 
-        /************  with DI in place at the moment I do not have idea how can I access the same object, so passed it in the argument. Not viable solution
+        /* with DI in place at the moment I do not have idea how can I access the same object, 
+         * so passed it in the argument.Not viable solution
+         
         public static void StartBooking(IBookingManager bookingManager, string guestName, int roomNumber, DateTime date)
         {
-            Monitor.Enter(_object);
+            Monitor.Enter(_service);
             try
             {
                 bookingManager.AddBooking("Surname", 101, new DateTime(2022, 08, 02));
             }
             finally
             {
-                Monitor.Exit(_object);
+                Monitor.Exit(_service);
             }
         }
-        ********************************************/
+        */
     }
 
     public class Startup

@@ -15,8 +15,6 @@ namespace HotelBooking.Tests.Services
         private InMemoryDbContext<HotelDBContext> _inMemoryDbContext;
         private HotelRoomsRepository _hotelRoomsRepository;
         private CustomerRepository _customerRepository;
-        private UnitOfWork _unitOfWorkInMemoryDB;
-        private HotelDBUnitOfWork _hotelDBUnitOfWorkInMemoryDB;
         private readonly Mock<IUnitOfWork> _unitOfWork = new Mock<IUnitOfWork>();
 
         public BookingServiceTests()
@@ -36,9 +34,6 @@ namespace HotelBooking.Tests.Services
             var dbContext = _inMemoryDbContext.GetDbContext();
             _hotelRoomsRepository = new HotelRoomsRepository(dbContext);
             _customerRepository = new CustomerRepository(dbContext);
-
-            //_unitOfWorkInMemoryDB = new UnitOfWork(dbContext);
-            //_hotelDBUnitOfWorkInMemoryDB = new HotelDBUnitOfWork(dbContext);
         }
 
         [Fact]
@@ -112,4 +107,5 @@ namespace HotelBooking.Tests.Services
         }
         */
     }
+
 }
