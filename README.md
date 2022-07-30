@@ -7,3 +7,4 @@ Implemented unit tests at ServiceLevel
 a. I would have implemented multithreading with lock 
 b. Write more unit tests at IBookManager level 
 c. Restructure Persistence project a bit by splitting them into two - Persistence and Domain
+d. No appSettings.json file added, seeing this simple app I haven't spent much time in further adding json file that will contain connection string. 
